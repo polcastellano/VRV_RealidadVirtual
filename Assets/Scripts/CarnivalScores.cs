@@ -12,10 +12,6 @@ public class CarnivalScores : MonoBehaviour {
 
 	[SerializeField]
 	private TextMeshPro plinkoScore;
-	[SerializeField]
-	private TextMeshPro wheelScore;
-	[SerializeField]
-	private TextMeshPro coinScore;
 
 	public static CarnivalScores Instance;
 
@@ -38,8 +34,6 @@ public class CarnivalScores : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		plinkoScore.text = "Plinko: " + plinkoPoints.ToString("0000");
-		wheelScore.text = "Wheel: " + wheelPoints.ToString("0000");
-		coinScore.text = "Coins: " + coinPoints.ToString("0000");
 
 		if (plinkoPoints + wheelPoints + coinPoints >= TeddyBearPointsMin) {
 			TeddyBear.SetActive(true);
