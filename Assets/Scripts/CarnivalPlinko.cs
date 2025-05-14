@@ -62,4 +62,8 @@ public class CarnivalPlinko : MonoBehaviour {
         currentCoin = null;
         BellDing.Play();
     }
+
+    public void ResetPlinkoScoreCall(){
+        CarnivalScores.Instance.ResetPlinkoScore();
+    }
 }

@@ -2,7 +2,8 @@
 using UnityEngine;
 using TMPro;
 
-public class CarnivalScores : MonoBehaviour {
+public class CarnivalScores : MonoBehaviour
+{
 
 	[SerializeField]
 	private int TeddyBearPointsMin = 2000;
@@ -16,39 +17,43 @@ public class CarnivalScores : MonoBehaviour {
 	public static CarnivalScores Instance;
 
 	private int plinkoPoints;
-	private int wheelPoints;
-	private int coinPoints;
 
-	void Awake() {
+	void Awake()
+	{
 		if (Instance == null)
 			Instance = this;
 
 		TeddyBear.SetActive(false);
 	}
 
-	void OnDestroy() {
+	void OnDestroy()
+	{
 		if (Instance = this)
 			Instance = null;
 	}
 
 	// Update is called once per frame
-	void Update () {
+	void Update()
+	{
 		plinkoScore.text = "Plinko: " + plinkoPoints.ToString("0000");
 
-		if (plinkoPoints + wheelPoints + coinPoints >= TeddyBearPointsMin) {
+		if (plinkoPoints >= TeddyBearPointsMin)
+		{
 			TeddyBear.SetActive(true);
+		}
+		else
+		{
+			TeddyBear.SetActive(false);
 		}
 	}
 
-	public void IncrementPlinkoScore(float points) {
-		plinkoPoints += (int) points;
+	public void IncrementPlinkoScore(float points)
+	{
+		plinkoPoints += (int)points;
 	}
 
-	public void IncrementWheelScore(float points) {
-		wheelPoints += (int) points;
-	}
-
-	public void IncrementCoinScore() {
-		coinPoints += 1000;
+	public void ResetPlinkoScore()
+	{
+		plinkoPoints = 0;
 	}
 }
