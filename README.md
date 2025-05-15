@@ -1,1 +1,1 @@
-[![Ver video]](https://youtu.be/Cky3UF_-op4)
+[![Ver video](portada.png)](https://youtu.be/Cky3UF_-op4)
