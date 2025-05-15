@@ -1,1 +1,1 @@
-[![Gameplay Plinkp](https://raw.githubusercontent.com/polcastellano/VRV_RealidadVirtual/blob/main/gameplay.mp4)]
+[![Gameplay Plinko](https://github.com/polcastellano/VRV_RealidadVirtual/blob/main/gameplay.mp4)]
