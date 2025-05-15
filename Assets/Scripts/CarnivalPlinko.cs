@@ -1,8 +1,9 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CarnivalPlinko : MonoBehaviour {
+public class CarnivalPlinko : MonoBehaviour
+{
 
     [Tooltip("Floating Score Prefab")]
     public ScoreHighlight ScoreHighlighterPrefab;
@@ -28,10 +29,12 @@ public class CarnivalPlinko : MonoBehaviour {
     private PlinkoCoin currentCoin; //the coin that we are in charge off
     private bool noActiveCoin = true;
     private float createCoinTime = 0f;
-	
-	// Update is called once per frame
-	void Update () {
-		if (noActiveCoin) {
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (noActiveCoin)
+        {
             CreateCoin();
             noActiveCoin = false;
         }
@@ -41,29 +44,37 @@ public class CarnivalPlinko : MonoBehaviour {
 
     }
 
-    private void CreateCoin() {
+    private void CreateCoin()
+    {
         currentCoin = Instantiate(PlinkoCoinPrefab.gameObject).GetComponent<PlinkoCoin>();
         currentCoin.transform.position = PlinkoCoinOrigin.position;
         createCoinTime = Time.time;
     }
 
     //to be called from the Plinko Coin script
-    public void CoinHitBottom(float points) { 
+    public void CoinHitBottom(float points)
+    {
         noActiveCoin = true;
         CarnivalScores.Instance.IncrementPlinkoScore(points);
-        ScoreHighlight sh = Instantiate(ScoreHighlighterPrefab, PlinkoCoinOrigin.transform.position, Quaternion.LookRotation(-PlinkoCoinOrigin.transform.right) );
+        ScoreHighlight sh = Instantiate(ScoreHighlighterPrefab, PlinkoCoinOrigin.transform.position, Quaternion.LookRotation(-PlinkoCoinOrigin.transform.right));
         sh.SetPoints(points);
 
         Thud.Play();
     }
 
-    public void DropCoin() {
-        currentCoin.DropCoin(this);
-        currentCoin = null;
-        BellDing.Play();
+    public void DropCoin()
+    {
+        if (currentCoin != null)
+        {
+            currentCoin.DropCoin(this);
+            currentCoin = null;
+            BellDing.Play();
+        }
+
     }
 
-    public void ResetPlinkoScoreCall(){
+    public void ResetPlinkoScoreCall()
+    {
         CarnivalScores.Instance.ResetPlinkoScore();
     }
 }
